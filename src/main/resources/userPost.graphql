@@ -1,0 +1,18 @@
+type User {
+    id: ID!
+    name: String! @constraint(minLength: 4, maxLength: 10)
+    email: String!
+    dob: Date! @constraint(min: 23/08/2022, max: 30/08/2022)
+    post: Post!
+    
+}
+
+type Post {
+    id: ID!
+    title: String! @constraint(minLength: 4, maxLength: 10)
+    content: String! @constraint(minLength: 4, maxLength: 10)
+    author: User!
+}
+
+
+

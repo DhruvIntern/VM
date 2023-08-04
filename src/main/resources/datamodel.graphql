@@ -1,0 +1,38 @@
+type Patient @count(10) {
+  id: ID!
+  name: Name!
+  age: Int!
+}
+
+type Doctor @count(5) {
+  id: ID!
+  name: Name!
+  email: Email!
+  specialization: Specialization!
+}
+
+type Appointment @count(20) {
+    id: ID!
+    patient: Patient!
+    doctor: Doctor!
+    appointmentDate: Date! @constraint( max: 23/08/2023)
+    appointmentTime: Time!
+    status: AppointmentStatus!
+}
+
+enum Specialization {
+    CARDIOLOGY
+    DERMATOLOGY
+    NEUROLOGY
+    PEDIATRICS
+    RADIOLOGY
+}
+
+enum AppointmentStatus {
+    SCHEDULED
+    CANCELLED
+    COMPLETED
+}
+
+scalar Email "^[a-zA-Z]{5}[0-9][a-z]@[a-z]{4}\.com$"
+scalar Name "Dr\.[A-Z][a-z]{8}"

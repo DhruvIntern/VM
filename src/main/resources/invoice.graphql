@@ -1,0 +1,273 @@
+type TranDtls {
+    TaxSch: TaxSchStatus!
+    SupType: SupTypeStatus!
+    RegRev: RegRevStatus!
+    EcmGstin: String!
+    IgstOnIntra: IgstOnIntra!
+}
+
+type DocDtls {
+    Typ: TypStatus!
+    No: String!
+    Dt: String!
+}
+
+type SellerDtls {
+    Gstin: String!
+    LglNm: String!
+    TrdNm: String!
+    Addr1: String!
+    Addr2: String!
+    Loc: String!
+    Pin: String!
+    Stcd: String!
+    Ph: String!
+    Em: String!
+}
+
+type BuyerDtls {
+    Gstin: String!
+    LglNm: String!
+    TrdNm: String!
+    Pos: String!
+    Addr1: String!
+    Addr2: String!
+    Loc: String!
+    Pin: String!
+    Stcd: String!
+    Ph: String!
+    Em: String!
+}
+
+type DispDtls {
+    Nm: String!
+    Addr1: String!
+    Addr2: String!
+    Loc: String!
+    Pin: String!
+    Stcd: String!
+}
+
+type ShipDtls {
+    Gstin: String!
+    LglNm: String!
+    TrdNm: String!
+    Pos: String!
+    Addr1: String!
+    Addr2: String!
+    Loc: String!
+    Pin: String!
+    Stcd: String!
+}
+
+type ItemList {
+    SlNo: String!
+    PreDesc: String!
+    isServc: isServcStatus!
+    HsnCd: String!
+    Barcde: String!
+    Qty: Int!
+    FreeQty: Int!
+    Unit: String!
+    UnitPrice: Int!
+    TotAmt: Int!
+    Discount: Int!
+    PreTaxVal: Int!
+    AssAmt: Int!
+    GstRt: Int!
+    IgstAmt: Int!
+    CgstAmt: Int!
+    SgstAmt: Int!
+    CesRt: Int!
+    CesAmt: Int!
+    CesNonAdvlAmt: Int!
+    StateCesRt: Int!
+    StateCesAmt: Int!
+    StateCesNonAdvlAmt: Int!
+    OthChrg: Int!
+    TotItemVal: Int!
+    OrdLineRef: String!
+    OrgCntry: String!
+    PrdSlNo: String!
+    BchDtls: BchDtls!
+    AttribDtls: AttribDtls!
+}
+
+type ValDtls {
+    AssVal: Int!
+    CgstVal: Int!
+    SgstVal: Int!
+    IgstVal: Int!
+    CesVal: Int!
+    StCesVal: Int!
+    Discount: Int!
+    OthChrg: Int!
+    RndOffAmt: Int!
+    TotInvVal: Int!
+    TotInvValFc: Int!
+}
+
+type PayDtls {
+    Nm: String!
+    AccDet: String!
+    Mode: String!
+    FinInsBr: String!
+    PayTerm: String!
+    PayInstr: String!
+    PayInstr: String!
+    DirDr: String!
+    CrDay: Int!
+    PaidAmt: Int!
+    PaymtDue: Int!
+}
+
+type RefDtls {
+    InvRm: String!
+    DocPerdDtls: DocPerdDtls!
+}
+
+type DocPerdDtls {
+    InvStDt: String!
+    InvEndDt: String!
+    PrecDocDtls: PrecDocDtls!
+}
+
+type PrecDocDtls {
+    PreDocument: PreDocument!
+}
+
+type ContrDtls {
+    Contract: Contract!
+}
+
+type Contract {
+    RecAdvRefr: String!
+    RecAdvDt: String!
+    TendRefr: String!
+    ContrRefr: String!
+    ExtRefr: String!
+    ProjRefr: String!
+    PORefr: String!
+    PORefDT: String!
+}
+
+type AddlDocDtls {
+    AddlDocument: AddlDocument!
+}
+
+type ExpDtls {
+    ShipBNo: String!
+    ShipBDt: String!
+    Port: String!
+    RefClm: String!
+    ForCur: String!
+    CntCode: String!
+    ExpDuty: String!
+}
+
+type EwbDtls {
+    TransId: String!
+    TransName: String!
+    TransMode: TransModeStatus!
+    Distance: Int!
+    TransDocNo: String!
+    TransDocDt: String!
+    VehNo: String!
+    VehType: VehTypeStatus!
+}
+
+type AddlDocument {
+    URL: String!
+    Docs: String!
+    Info: String!
+}
+
+type PreDocument {
+    InvNo: String!
+    InvDt: String!
+    OthRefNo: String!
+}
+
+type BchDtls {
+    Nm: String!
+    ExpDt: String!
+    WrDt: String!
+
+}
+
+type AttribDtls {
+    Nm: String!
+    Val: String!
+}
+
+
+enum TaxSchStatus {
+    GST
+}
+
+enum SupTypeStatus {
+    B2B
+    SEZWP
+    SEZWOP
+    EXPWP
+    EXPWOP
+    DEXP
+}
+
+enum RegRevStatus {
+    Y
+    N
+}
+
+enum IgstOnIntra {
+    Y
+    N
+}
+
+enum TypStatus {
+    INV
+    CRN
+    DBN
+}
+
+enum isServcStatus {
+    Y
+    N
+}
+
+enum TransModeStatus {
+1
+2
+3
+}
+
+enum VehTypeStatus {
+    O
+    R
+}
+
+scalar TranDtls.EcmGstin "([0-9]{2}[0-9A-Z]{13})"
+scalar DocDtls.No "^([A-Z1-9]{1}[A-Z0-9/-]{0,15})$"
+scalar DocDtls.Dt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar SellerDtls.Gstin "([0-9]{2}[0-9A-Z]{13})"
+scalar BuyerDtls.Gstin "^(([0-9]{2}[0-9A-Z]{13})|URP)$"
+scalar ShipDtls.Gstin  "^(([0-9]{2}[0-9A-Z]{13})|URP)$"
+scalar BchDtls.ExpDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar BchDtls.WrDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar RefDtls.InvRm "^[0-9A-Za-z/-]{3,100}$"
+scalar DocPerdDtls.InvStDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar DocPerdDtls.InvEndDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar PreDocument.InvNo "^[1-9A-Z]{1}[0-9A-Z/-]{1,15}$"
+scalar PrecDocument.InvDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar Contract.RecAdvRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.RecAdvDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar Contract TendRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ContrRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ExtRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ProjRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.PORefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.PORefDT "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar ExpDtls.ShipBDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar ExpDtls.Port "^[0-9A-Za-z]{2,10}$"
+scalar EwbDtls.TransDocNo "^([0-9A-Z/-]){1,15}$"
+scalar EwbDtls.TransDocDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"

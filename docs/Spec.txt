@@ -1,0 +1,19 @@
+entity Org @count = 5 {
+	id: ID!
+	ceo : Person
+	cto : Person
+}
+
+entity Person @count = 100 {
+id : ID!
+first_name : Name @min_length=3, @max_length=30
+last_name : Name @min_length=5, @max_length=35
+start_date : Date
+end_date : Date @constraint(>start_date)
+}
+
+
+
+Scalar Name [a-zA-Z]+
+
+consitent (FK relations), semantic (constraints), typed (regex), scalable (threads/distribution)

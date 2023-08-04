@@ -1,0 +1,273 @@
+type TranDtls {
+    TaxSch: TaxSchStatus!
+    SupType: SupTypeStatus!
+    RegRev: RegRevStatus!
+    EcmGstin: String! @constraint(minLength: 15, maxLength: 15)
+    IgstOnIntra: IgstOnIntra!
+}
+
+type DocDtls {
+    Typ: TypStatus!
+    No: String! @constraint(minLength: 16, maxLength: 16)
+    Dt: String! @constraint(minLength: 10, maxLength: 10)
+}
+
+type SellerDtls {
+    Gstin: String!
+    LglNm: String! @constraint(minLength: 3, maxLength: 100)
+    TrdNm: String! @constraint(minLength: 3, maxLength: 100)
+    Addr1: String! @constraint(minLength: 3, maxLength: 100)
+    Addr2: String! @constraint(minLength: 3, maxLength: 100)
+    Loc: String! @constraint(minLength: 3, maxLength: 50)
+    Pin: String! @constraint(minLength: 100000, maxLength: 999999)
+    Stcd: String! @constraint(minLength: 1, maxLength: 2)
+    Ph: String! @constraint(minLength: 6, maxLength: 12)
+    Em: String! @constraint(minLength: 6, maxLength: 100)
+}
+
+type BuyerDtls {
+    Gstin: String!
+    LglNm: String! @constraint(minLength: 3, maxLength: 100)
+    TrdNm: String! @constraint(minLength: 3, maxLength: 100)
+    Pos: String! @constraint(minLength: 1, maxLength: 2)
+    Addr1: String! @constraint(minLength: 3, maxLength: 100)
+    Addr2: String! @constraint(minLength: 3, maxLength: 100)
+    Loc: String! @constraint(minLength: 3, maxLength: 100)
+    Pin: String! @constraint(minLength: 100000, maxLength: 999999)
+    Stcd: String! @constraint(minLength: 1, maxLength: 2)
+    Ph: String! @constraint(minLength: 6, maxLength: 12)
+    Em: String! @constraint(minLength: 6, maxLength: 100)
+}
+
+type DispDtls {
+    Nm: String! @constraint(minLength: 3, maxLength: 100)
+    Addr1: String! @constraint(minLength: 3, maxLength: 100)
+    Addr2: String! @constraint(minLength: 3, maxLength: 100)
+    Loc: String! @constraint(minLength: 3, maxLength: 100)
+    Pin: String! @constraint(minLength: 100000, maxLength: 999999)
+    Stcd: String! @constraint(minLength: 1, maxLength: 2)
+}
+
+type ShipDtls {
+    Gstin: String!
+    LglNm: String! @constraint(minLength: 3, maxLength: 100)
+    TrdNm: String! @constraint(minLength: 3, maxLength: 100)
+    Addr1: String! @constraint(minLength: 3, maxLength: 100)
+    Addr2: String! @constraint(minLength: 3, maxLength: 100)
+    Loc: String! @constraint(minLength: 3, maxLength: 100)
+    Pin: String! @constraint(minLength: 100000, maxLength: 999999)
+    Stcd: String! @constraint(minLength: 1, maxLength: 2)
+}
+
+type ItemList {
+    SlNo: String! @constraint(minLength: 1, maxLength: 6)
+    PreDesc: String! @constraint(minLength: 3, maxLength: 300)
+    isServc: isServcStatus!
+    HsnCd: String! @constraint(minLength: 4, maxLength: 8)
+    Barcde: String! @constraint(minLength: 3, maxLength: 30)
+    Qty: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    FreeQty: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    Unit: String! @constraint(minLength: 3, maxLength: 8)
+    UnitPrice: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    TotAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    Discount: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    PreTaxVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    AssAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    GstRt: Int! @constraint(minLength: 1, maxLength: 999)
+    IgstAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    CgstAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    SgstAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    CesRt: Int! @constraint(minLength: 1, maxLength: 999)
+    CesAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    CesNonAdvlAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    StateCesRt: Int! @constraint(minLength: 1, maxLength: 999)
+    StateCesAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    StateCesNonAdvlAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    OthChrg: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    TotItemVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    OrdLineRef: String! @constraint(minLength: 1, maxLength: 50)
+    OrgCntry: String! @constraint(minLength: 2, maxLength: 2)
+    PrdSlNo: String! @constraint(minLength: 1, maxLength: 20)
+    BchDtls: BchDtls!
+    AttribDtls: AttribDtls!
+}
+
+type ValDtls {
+    AssVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    CgstVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    SgstVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    IgstVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    CesVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    StCesVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    Discount: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    OthChrg: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    RndOffAmt: Int! @constraint(minLength: 1, maxLength: 99)
+    TotInvVal: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    TotInvValFc: Int! @constraint(minLength: 1, maxLength: 9999999999)
+}
+
+type PayDtls {
+    Nm: String! @constraint(minLength: 1, maxLength: 100)
+    AccDet: String! @constraint(minLength: 1, maxLength: 18)
+    Mode: String! @constraint(minLength: 1, maxLength: 18)
+    FinInsBr: String! @constraint(minLength: 1, maxLength: 11)
+    PayTerm: String! @constraint(minLength: 1, maxLength: 100)
+    PayInstr: String! @constraint(minLength: 1, maxLength: 100)
+    PayInstr: String! @constraint(minLength: 1, maxLength: 100)
+    CrTrn: String! @constraint(minLength: 1, maxLength: 100)
+    DirDr: String! @constraint(minLength: 1, maxLength: 100)
+    CrDay: Int! @constraint(minLength: 1, maxLength: 9999)
+    PaidAmt: Int! @constraint(minLength: 1, maxLength: 9999999999)
+    PaymtDue: Int! @constraint(minLength: 1, maxLength: 9999999999)
+}
+
+type RefDtls {
+    InvRm: String!
+    DocPerdDtls: DocPerdDtls!
+}
+
+type DocPerdDtls {
+    InvStDt: String!
+    InvEndDt: String!
+    PrecDocDtls: PrecDocDtls!
+}
+
+type PrecDocDtls {
+    PreDocument: PreDocument!
+}
+
+type ContrDtls {
+    Contract: Contract!
+}
+
+type Contract {
+    RecAdvRefr: String!
+    RecAdvDt: String!
+    TendRefr: String!
+    ContrRefr: String!
+    ExtRefr: String!
+    ProjRefr: String!
+    PORefr: String!
+    PORefDT: String!
+}
+
+type AddlDocDtls {
+    AddlDocument: AddlDocument!
+}
+
+type ExpDtls {
+    ShipBNo: String! @constraint(minLength: 1, maxLength: 20)
+    ShipBDt: String!
+    Port: String!
+    RefClm: String! @constraint(minLength: 1, maxLength: 1)
+    ForCur: String! @constraint(minLength: 3, maxLength: 16)
+    CntCode: String! @constraint(minLength: 2, maxLength: 2)
+    ExpDuty: String! @constraint(minLength: 0, maxLength: 100)
+}
+
+type EwbDtls {
+    TransId: String! @constraint(minLength: 15, maxLength: 15)
+    TransName: String! @constraint(minLength: 3, maxLength: 100)
+    TransMode: TransModeStatus!
+    Distance: Int! @constraint(minLength: 1, maxLength: 9999)
+    TransDocNo: String!
+    TransDocDt: String!
+    VehNo: String! @constraint(minLength: 4, maxLength: 20)
+    VehType: VehTypeStatus!
+}
+
+type AddlDocument {
+    URL: String! @constraint(minLength: 3, maxLength: 100)
+    Docs: String! @constraint(minLength: 3, maxLength: 1000)
+    Info: String! @constraint(minLength: 3, maxLength: 1000)
+}
+
+type PreDocument {
+    InvNo: String!
+    InvDt: String!
+    OthRefNo: String!
+}
+
+type BchDtls {
+    Nm: String!
+    ExpDt: String!
+    WrDt: String!
+
+}
+
+type AttribDtls {
+    Nm: String!
+    Val: String!
+}
+
+
+enum TaxSchStatus {
+    GST
+}
+
+enum SupTypeStatus {
+    B2B
+    SEZWP
+    SEZWOP
+    EXPWP
+    EXPWOP
+    DEXP
+}
+
+enum RegRevStatus {
+    Y
+    N
+}
+
+enum IgstOnIntra {
+    Y
+    N
+}
+
+enum TypStatus {
+    INV
+    CRN
+    DBN
+}
+
+enum isServcStatus {
+    Y
+    N
+}
+
+enum TransModeStatus {
+1
+2
+3
+}
+
+enum VehTypeStatus {
+    O
+    R
+}
+
+scalar TranDtls.EcmGstin "([0-9]{2}[0-9A-Z]{13})"
+scalar DocDtls.No "^([A-Z1-9]{1}[A-Z0-9/-]{0,15})$"
+scalar DocDtls.Dt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar SellerDtls.Gstin "([0-9]{2}[0-9A-Z]{13})"
+scalar BuyerDtls.Gstin "^(([0-9]{2}[0-9A-Z]{13})|URP)$"
+scalar ShipDtls.Gstin  "^(([0-9]{2}[0-9A-Z]{13})|URP)$"
+scalar BchDtls.ExpDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar BchDtls.WrDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar RefDtls.InvRm "^[0-9A-Za-z/-]{3,100}$"
+scalar DocPerdDtls.InvStDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar DocPerdDtls.InvEndDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar PreDocument.InvNo "^[1-9A-Z]{1}[0-9A-Z/-]{1,15}$"
+scalar PrecDocument.InvDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar Contract.RecAdvRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.RecAdvDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar Contract TendRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ContrRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ExtRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.ProjRefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.PORefr "[0-9A-Za-z/-]{1,20}$"
+scalar Contract.PORefDT "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar ExpDtls.ShipBDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"
+scalar ExpDtls.Port "^[0-9A-Za-z]{2,10}$"
+scalar EwbDtls.TransDocNo "^([0-9A-Z/-]){1,15}$"
+scalar EwbDtls.TransDocDt "[0-3][0-9]/[0-1][0-9]/[2][0][1-2][0-9]"

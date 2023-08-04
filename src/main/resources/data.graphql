@@ -1,0 +1,43 @@
+type Patient {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: Email!
+    dateOfBirth: Date!
+    appointments: Appointment!
+}
+
+type Doctor {
+  id: ID!
+  firstName: Name!
+  lastName: String!
+  email: Email!
+  specialization: Specialization!
+  appointments: Appointment!
+}
+
+enum Specialization {
+    CARDIOLOGY
+    DERMATOLOGY
+    NEUROLOGY
+    ONCOLOGY
+    PEDIATRICS
+}
+
+type Appointment {
+    id: ID!
+    patient: Patient!
+    doctor: Doctor!
+    appointmentDate: Date!
+    appointmentTime: Time!
+    status: AppointmentStatus!
+}
+
+enum AppointmentStatus {
+    SCHEDULED
+    COMPLETED
+    CANCELED
+}
+
+scalar Name "[A-Z][a-z]{4}"
+scalar Email "^[a-zA-Z]{5}[0-9][a-z]@[a-z]{4}\.com$"

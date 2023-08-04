@@ -1,0 +1,20 @@
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    orders: Order!
+}
+
+type Order {
+    id: ID!
+    customer: Customer!
+    orderDate: Time!
+    products: Product!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+    orders: Order!
+}

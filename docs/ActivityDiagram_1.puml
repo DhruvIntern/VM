@@ -1,0 +1,23 @@
+@startuml
+title Synthetic Data Generator Activity Diagram
+
+start
+
+partition EntityConfiguration {
+    :parse GraphQL-like specification;
+    :create entity configurations;
+}
+
+partition GenericEntityGenerator {
+    :initialize with entity configurations;
+}
+
+partition DataGenerator {
+    :create DataGenerator with configurations and generator;
+    :generate synthetic data;
+    :write synthetic data to CSV files;
+}
+
+stop
+
+@enduml

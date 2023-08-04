@@ -1,0 +1,22 @@
+type Student {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    enrollments: Enrollment!
+}
+
+type Course {
+    id: ID!
+    name: String!
+    instructor: String!
+    enrollments: Enrollment!
+}
+
+type Enrollment {
+    id: ID!
+    student: Student!
+    course: Course!
+    enrollmentDate: Time!
+    grade: Float!
+}
