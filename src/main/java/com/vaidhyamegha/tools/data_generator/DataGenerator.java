@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 import com.github.curiousoddman.rgxgen.RgxGen;
 
@@ -342,6 +347,36 @@ public class DataGenerator {
         long randomDay = minDay + (int) (Math.random() * (maxDay - minDay));
         LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
         return randomDate.toString();
+    }
+
+    public static String generateRandomDate(String minDate) {
+        try {
+            // Parse the minimum date parameter
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date minDateObj = dateFormat.parse(minDate);
+
+            // Get the current date and time
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date());
+
+            // Set the maximum date to the current date
+            long maxDateMillis = calendar.getTimeInMillis();
+
+            // Calculate the range in milliseconds
+            long rangeMillis = maxDateMillis - minDateObj.getTime();
+
+            // Generate a random date within the specified range
+            Random random = new Random();
+            long randomDateMillis = minDateObj.getTime() + (long) (random.nextDouble() * rangeMillis);
+
+            // Create a new Date object from the random millis
+            Date randomDate = new Date(randomDateMillis);
+
+            // Format the random date as "DD/MM/YYYY"
+            return dateFormat.format(randomDate);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Invalid minimum date format");
+        }
     }
 
     /**

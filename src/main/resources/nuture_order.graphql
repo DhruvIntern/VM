@@ -1,0 +1,38 @@
+type NutureOrder @count(10000) {
+  retailerId: retailer
+  mobile: Int! 
+  masterAppOrderId: String!
+  appOrderId: String!
+  transactionAmount: Float!
+  orderDate: Date! @constraint(min: 01/01/2023)
+  orderStatus: order_status!
+  paymentMode: String!
+  paymentMethod: paymentMethod!
+  paymentDesc: String
+  gstId: String  @constraint {entitydifference=retailerId}
+  paymentType: String
+}
+
+type Query {
+  getOrder(retailerId: Int!): [NutureOrder]
+}
+
+schema {
+  query: Query
+}
+
+enum paymentMethod {
+UPL Credit @constraint {classsize=0.20}
+NEFT 
+Razorpay prepaid
+Credit Prepaid
+Reward Points
+3rd Party Credit
+}
+
+enum order_status {
+Delivered
+
+}
+
+//removed something from here
